@@ -1,6 +1,11 @@
-# Use the official httpd image as the base image
-FROM httpd:latest
+FROM adoptopenjdk/openjdk11
+  
+EXPOSE 8080
+ 
+ENV APP_HOME /usr/src/app
 
-# Copy your index.html file into the default Apache document root
-COPY index.html /usr/local/apache2/htdocs/
+COPY target/*.jar $APP_HOME/app.jar
 
+WORKDIR $APP_HOME
+
+CMD ["java", "-jar", "app.jar"]
