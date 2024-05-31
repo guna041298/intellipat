@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: gunacontainer
-        image: gunanithi/sample:latest
+        image: gunanithi/httpd:latest
         ports:
         - containerPort: 80
