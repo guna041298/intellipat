@@ -1,11 +1,5 @@
-FROM adoptopenjdk/openjdk11
-  
-EXPOSE 8080
- 
-ENV APP_HOME /usr/src/app
+# Use a lightweight base image
+FROM nginx:alpine
 
-COPY target/*.jar $APP_HOME/app.jar
-
-WORKDIR $APP_HOME
-
-CMD ["java", "-jar", "app.jar"]
+# Copy the static HTML file into the nginx document root
+COPY index.html /usr/share/nginx/html/index.html
